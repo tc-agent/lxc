@@ -70,6 +70,7 @@ perl -lne 'if (/config_jump_table_net\[\]\s*=/../^}/) { /"([^"]+)"/ && print "lx
 [[ -s san_build/doc/examples/lxc-net-keys.conf ]]
 
 zip -r $OUT/fuzz-lxc-config-read_seed_corpus.zip san_build/doc/examples
+cp $OUT/fuzz-lxc-config-read_seed_corpus.zip $OUT/fuzz-lxc-api_seed_corpus.zip
 
 mkdir fuzz-lxc-define-load_seed_corpus
 perl -lne '/([^=]+)/ && print "printf $1= >fuzz-lxc-define-load_seed_corpus/$1"' san_build/doc/examples/{keys,lxc-net-keys}.conf | bash

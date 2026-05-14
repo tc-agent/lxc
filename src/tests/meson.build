@@ -443,4 +443,13 @@ if want_oss_fuzz
         link_with: [liblxc_static],
         install: false,
         install_dir: bindir)
+
+    test_programs += executable(
+        'fuzz-lxc-api',
+        files('fuzz-lxc-api.c') + include_sources + netns_ifaddrs_sources,
+        include_directories: liblxc_includes,
+        dependencies: [fuzzing_engine, oss_fuzz_dependencies],
+        link_with: [liblxc_static],
+        install: false,
+        install_dir: bindir)
 endif
